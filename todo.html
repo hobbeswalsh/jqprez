@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="todo.js"></script>
+    <link rel="stylesheet" href="todo.css"/>
+</head>
+<body>
+<div ng-controller="todoController">
+    <h2>You have {{getUndoneTodos()}} thing{{pluralizeIt()}} to do.</h2>
+    <ul>
+
+        <li ng-repeat="todo in todos" class="done-{{todo.done}}">
+            <span><input type="checkbox" ng-model="todo.done"></span>
+            {{todo.text}}
+        </li>
+    </ul>
+    <form ng-submit="addTodo()">
+        <input type="text" ng-model="todoText">
+    </form>
+    <span>
+        <button ng-click="pruneTodos()">Prune TODO list</button>
+    </span>
+
+
+</div>
+</body>
